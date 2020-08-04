@@ -1,0 +1,3 @@
+{
+    "mongoURI":"mongodb+srv://app123:app123@cluster0.bd2l6.mongodb.net/shrink?retryWrites=true&w=majority"
+}
