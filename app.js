@@ -1,31 +1,19 @@
 const express = require("express");
-const bodyParser=require('body-parser')
-const Url = require('./models/url');
 const connectDB =require("./config/db");
 
 const app = express();
 
-//middleware
-app.use(bodyParser.urlencoded({extended: true}));
-
-//ejs
 app.set('view engine', 'ejs');
-
-//connected to mongodb
+//connect to MongoDB
 connectDB();
-//get method
-app.get('/', (req, res) => {
-  res.render("home");
-  });
 
-//post method
-app.post('/shorturl', (req, res) => {
-  const longurl=req.body.longurl;
-  console.log(longurl);
-});
 
-const PORT = process.env.PORT || 5000;
+app.use(express.json({ extented: false }));
 
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-});
+// Define Routes
+app.use('/', require('./routes/index'));
+app.use('/api', require('./routes/url'));
+
+const PORT = 5000 || process.env.PORT;
+
+app.listen(PORT, () => {console.log(`Server listening on port ${PORT}`);});

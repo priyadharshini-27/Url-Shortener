@@ -1,0 +1,6 @@
+POST http://localhost:5000/api/shorten
+Content-Type: application/json
+
+{
+  "longUrl": "https://github.com/priyadharshini-27/Register-Login-Authentication/blob/master/views/login.ejs"
+}
